@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quản lý học phí
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="action-bg">
+        <a class="btn-item add-btn" href="{{ url_for('addNewTuition_s1') }}">Thêm mới</a>
+    </div>
+</div>
+
+<div class="content-main">
+    <table>
+        <tr>
+            <td>Tên học sinh</td>
+            <td>Mã học sinh</td>
+            <td>Học phí</td>
+            <td>Đã thu</td>
+            <td>Còn nợ</td>
+            <td>Thời gian</td>
+            <td>Thao tác</td>
+        </tr>
+        {% for tuition in tuitions %}
+
+        <tr>
+            <td>{{ student.name}}</td>
+            <td>{{ student.id}}</td>
+            <td>{{ tuition.tuition_receivable }}</td>
+            <td>{{ tuition.tuition_paid }}</td>
+            <td>{{ tuition.tuition_debt }}</td>
+            <td>{{ tuition.time.strftime('%d/%m/%Y') }}</td> 
+            <td>
+                <a class="update-btn" href="{{ url_for('update_tuition', tuition_id=tuition.id) }}"><i class="fa-solid fa-pencil"></i></a>
+                <a class="del-btn" href="{{ url_for('delete_tuition', tuition_id=tuition.id) }}"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+        </tr>
+        {% endfor%}
+
+    </table>
+</div>
+{% endblock %} 

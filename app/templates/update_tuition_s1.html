@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cập nhật thông tin học phí
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật thông tin học phí</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_tuition_s1') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã học phí </li>
+                <li>Học phí </li>
+                <li>Đã thu</li>
+                <li>Còn nợ</li>
+                <li>Thời gian</li> 
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="tuition_id" value="{{tuition.id}}" readonly="true">
+                </li>
+                <li> 
+                    <input type="number" name="tuition_receivable" value="{{tuition.tuition_receivable}}" required>
+                </li>
+                <li>
+                    <input type="number" name="tuition_paid" value="{{tuition.tuition_paid}}" required>
+                </li>
+                <li>
+                    <input type="number" name="tuition_debt" value="{{tuition.tuition_debt}}" readonly="true">
+                </li>
+                <li>
+                    <input type="date" name="time" value="{{tuition.time}}" required>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

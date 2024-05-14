@@ -1,0 +1,28 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin hoạt động
+{% endblock %}
+
+{% block z %}
+<div class="content-main">
+    <table name="Bảng thông tin">
+        <tr>
+            <td>STT</td>
+            <td>Ngày</td>  
+            <td>Thời gian</td>  
+            <td>Tên hoạt động</td>
+            <td>Giáo viên</td>     
+        </tr>
+        {% for works in works|sort(attribute='date')|reverse %}
+            <tr>      
+                <td> {{ loop.index }}</td>
+                <td>{{ works.date.strftime('%d/%m/%Y') }}</td>
+                <td>{{ works.time.strftime('%H:%M') }}</td>
+                <td>{{ works.name }}</td>  
+                <td>{{ works.teacher_name }}</td>
+            </tr>    
+        {% endfor%}   
+    </table>
+</div>
+{% endblock %}

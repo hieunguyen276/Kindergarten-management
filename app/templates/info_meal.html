@@ -1,0 +1,34 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin bữa ăn
+{% endblock %}
+
+{% block z %}
+<div class="content-main">
+    <table name="Bảng thông tin">
+        <tr>
+            <td>STT</td>
+            <td>Thời gian</td>  
+            <td>Bữa</td>
+            <td>Các món ăn</td>     
+        </tr>
+        {% for meals in meals|sort(attribute='time')|reverse %}
+            <tr>      
+                <td> {{ loop.index }}</td>
+                <td>{{ meals.time.strftime('%d/%m/%Y') }}</td>
+                <td>{{ meals.name }}</td>  
+                
+                <td>
+                    {% for dishs in dishs %}
+                    {% if dishs.meal_id == meals.id%}
+                        {{dishs.name}},   
+                    {% endif%}
+                    {% endfor%}
+                </td>
+                
+            </tr>    
+        {% endfor%}   
+    </table>
+</div>
+{% endblock %}

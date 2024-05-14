@@ -1,0 +1,46 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin học sinh
+{% endblock %}
+
+{% block z %}
+
+<div class="content-main">
+    <table>
+        <tr>
+            <td>Mã HS</td>
+            <td>Họ tên</td>
+            <td>Giới tính</td>            
+            <td>Năm sinh</td>
+            <td>Tên lớp</td>
+            <td>Địa chỉ</td>
+            <td>Giáo viên</td>
+        </tr>
+        
+
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.gender }}</td>
+            <td>{{ student.date_of_birth }}</td>
+            <td>
+                {% for class in class1 %}
+                    {% if student.class_id == class.id  %}
+                        {{class.name}}
+                    {% endif %}
+                {% endfor%}
+            </td>
+            <td>{{ student.address }}</td>
+            <td>
+                {% for class in class1 %}
+                    {% if student.class_id == class.id  %}
+                    <a class="view-btn" href="{{ url_for('info_teacher', class_id=class.id) }}"><i class="fa-solid fa-eye"></i></a>
+                    {% endif %}
+                {% endfor%}
+                
+            </td>
+        </tr>      
+    </table> 
+</div>
+{% endblock %}

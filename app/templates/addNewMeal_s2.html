@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới bữa ăn
+{% endblock %}
+
+{% block z %}
+
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm mới bữa ăn cho lớp: {{ class1.name }}</span>         
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewMeal_s3') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã lớp học</li>
+                <li>Tên bữa ăn</li>
+                <li>Ngày</li> 
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="class_id" value="{{class1.id}}" readonly="true">
+                </li>
+                <li>
+                    <select name="name" required>  
+                        <option value="Sáng">Sáng</option>
+                        <option value="Trưa">Trưa</option>
+                        <option value="Chiều">Chiều</option>
+                        <option value="Phụ">Phụ</option>
+                    </select>
+                </li>
+                <li>
+                    <input type="date" name="time" required>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

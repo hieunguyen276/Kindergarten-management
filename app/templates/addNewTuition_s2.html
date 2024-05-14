@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới học phí
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm học phí cho học sinh: {{student.name}}</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewTuition_s3') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã học phí</li>
+                <li>Học phí</li>
+                <li>Đã thu</li> 
+                <li>Thời gian</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="student_id" value="{{student.id}}" readonly="true">
+                </li>
+                <li>
+                    <input type="number" name="tuition_receivable" required>
+                </li>
+                <li>
+                    <input type="number" name="tuition_paid" required>
+                <li>
+                    <input type="date" name="time" required>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

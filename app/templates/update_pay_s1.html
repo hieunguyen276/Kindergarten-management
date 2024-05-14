@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cập nhật đóng học phí
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật đóng học phí</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_pay_s1') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã học phí </li>
+                <li>Số tiền nộp</li>
+                <li>Người nộp</li> 
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="pay_id" value="{{pay.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="money" value="{{pay.money}}" required>
+                </li>
+                <li>
+                    <input name="payer" value="{{pay.payer}}" required>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

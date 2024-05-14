@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới thông báo
+{% endblock %}
+
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm mới thông báo</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewNotification_s2') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Tiêu đề</li>
+                <li>Nội dung</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input type="text" name="name" required>
+                </li>
+                <li>
+                    <textarea rows="6" cols="90" name="content" required></textarea>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

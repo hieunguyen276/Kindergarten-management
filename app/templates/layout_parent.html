@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý nhà trẻ</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/layout.css">
+    </head>
+    <body>
+        {% block bodyTitle %}
+        {% endblock %}
+
+        <div id="content">
+            <div id="nav">
+                <h3 class="nav-title">DASHBOARDS</h3>
+                {% if current_user.is_authenticated %}
+                <ul class="management">
+                    <li class="{% if current_page == 'index_parent' %}active{% endif %}">
+                        <a href="{{ url_for('index_parent') }}">
+                            <i class="fa-solid fa-house-user"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('logout_parent') }}">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+                    
+                {% endif %}
+
+                <h3 class="nav-title">
+                    THÔNG TIN
+                </h3>
+
+                {% if current_user.is_authenticated %}
+                    <ul class="management">
+                        <li>
+                            <a href="{{ url_for('info_student', parent_id=current_user.id) }}">
+                                <i class="fa-solid fa-children"></i>
+                                Thông tin học sinh
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('info_health', parent_id=current_user.id) }}">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                Thông tin thể trạng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('info_meal', parent_id=current_user.id) }}">
+                                <i class="fa-solid fa-utensils"></i>
+                                Thông tin bữa ăn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('info_work', parent_id=current_user.id) }}">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                Thông tin hoạt động
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('info_tuition', parent_id=current_user.id) }}">
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                Thông tin học phí
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('info_notification') }}">
+                                <i class="fa-solid fa-bell"></i>
+                                Thông báo
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div id="main">   
+                {% block z %}
+                {% endblock %}
+            </div>
+        </div>    
+    </body>
+</html>

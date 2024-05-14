@@ -1,0 +1,30 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin thể trạng
+{% endblock %}
+
+{% block z %}
+<div class="content-main">
+    <table name="Bảng thông tin">
+        <tr>
+            <td>STT</td>
+            <td>Thời gian</td>
+            <td>Chiều cao</td>
+            <td>Cân nặng</td>
+            <td>Ghi chú</td>            
+        </tr>
+        {% for health in healths|sort(attribute='time')|reverse %}
+            {% if health.student_id == student.id  %}
+            <tr>      
+                <td> {{ loop.index }}</td>
+                <td>{{ health.time.strftime('%d/%m/%Y %H:%M') }}</td>
+                <td>{{ health.height }}</td>
+                <td>{{ health.weight }}</td>
+                <td>{{ health.note }}</td>          
+            </tr>    
+            {% endif %}   
+        {% endfor%}   
+    </table>
+</div>
+{% endblock %}

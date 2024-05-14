@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quản lý học phí
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="action-bg">
+        <a class="btn-item add-btn" href="{{ url_for('addNewTuition_s1') }}">Thêm mới</a>
+    </div>
+    <div class="btn-option">
+        <a class="select-btn" href="{{ url_for('pay_management') }}">Lịch sử thanh toán</a>
+    </div>
+    <div class="search-input">
+        <form action="{{ url_for('searchStudentForPay') }}" method="GET">
+            <div class="form-input">
+                <input type="text" name="id" placeholder="Nhập mã học sinh">
+                <button class="view-btn">Tìm kiếm</button>
+            </div>
+        </form>     
+    </div>
+    <div class="sub-header">
+        <span>Lọc: </span>
+        <div class="menu-class">
+            <span>Chọn lớp học</span>
+            {% for class in class1 %}
+            <ul class="menu-item">
+                <li><a href="{{ url_for('tuition_management_s2', class_id=class.id) }}">{{class.name}}</a></li>
+            </ul>
+            
+            {% endfor %}
+        </div>
+    </div> 
+</div>
+
+            
+<div class="content-main">
+    <table> 
+        <tr>
+            <td>Họ tên</td>
+            <td>Mã HS</td>
+            <td>Tên lớp</td>
+            <td>Học phí</td>
+            <td>Đã thu</td>
+            <td>Còn nợ</td>
+            <td>Người nộp</td>
+            <td>Thời gian</td>
+            <td>Thao tác</td>
+            <td>Thanh toán</td>
+        </tr>
+
+        {% for tuition in tuitions %}
+        <tr>  
+            {% if students.id == tuition.student_id %}
+            <td>{{ students.name }}</td>
+            <td>{{ students.id }}</td>
+            <td>
+                {% for class in class1 %}
+                {% if class.id == students.class_id %} 
+                    {{ class.name }}
+                {% endif %}
+                {% endfor%}
+            </td>
+                <td>{{ tuition.tuition_receivable }}</td>
+                <td>{{ tuition.tuition_paid }}</td>
+                <td>{{ tuition.tuition_debt }}</td>
+                <td>
+                    {% for pay in pays %}
+                    {% if tuition.id == pay.tuition_id %} 
+                        {{ pay.payer }}
+                    {% endif %}
+                    {% endfor%}
+                </td>
+                <td>{{ tuition.time.strftime('%d/%m/%Y') }}</td> 
+            <td>
+                <a class="update-btn" href="{{ url_for('update_tuition', tuition_id=tuition.id) }}"><i class="fa-solid fa-pencil"></i></a>
+                <a class="del-btn" href="{{ url_for('delete_tuition', tuition_id=tuition.id) }}"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+            <td>
+                <a class="credit-btn" href="{{ url_for('addNewPay_s1', tuition_id=tuition.id) }}"><i class="fa-regular fa-credit-card"></i></a>
+            </td>
+            {% endif %}       
+        </tr>
+        
+        {% endfor%}
+        
+    </table>
+</div>
+{% endblock %} 

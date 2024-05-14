@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm phụ huynh
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm phụ huynh cho học sinh: {{student.name}}</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewParent_s3') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã học sinh</li>
+                <li>Tên phụ huynh</li>
+                <li>Số điện thoại</li> 
+                <li>Tài khoản</li>
+                <li>Mật khẩu</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="student_id" value="{{student.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" required>
+                </li>
+                <li>
+                    <input type="number" name="phone" required>
+                </li>
+                <li>
+                    <input name="username" required>
+                </li>
+                <li>
+                    <input name="password" required>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

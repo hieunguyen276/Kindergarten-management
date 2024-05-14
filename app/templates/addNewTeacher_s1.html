@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới giáo viên
+{% endblock %}
+
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <h3>Chọn lớp học muốn thêm giáo viên</h3>
+    </div>
+    
+</div>
+<div class="content-main">
+    <ul class="list-class">
+        {% for class in class1 %}
+            <li>
+                <a href="{{ url_for('addNewTeacher_s2', class_id=class.id) }}">
+                    {{ class.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

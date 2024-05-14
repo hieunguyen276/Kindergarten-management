@@ -1,0 +1,45 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Parent
+{% endblock %}
+
+{% block z %}
+    
+    <div class="box box-color-4">
+        <a href="{{ url_for('info_student', parent_id=current_user.id) }}">
+            <i class="fa-solid fa-children"></i>
+            Thông tin học sinh
+        </a>
+    </div>
+    <div class="box box-color-2">
+        <a href="{{ url_for('info_health', parent_id=current_user.id) }}">
+            <i class="fa-solid fa-heart-pulse"></i>
+            Thông tin thể trạng
+        </a>
+    </div>
+    <div class="box box-color-4">
+        <a href="{{ url_for('info_meal', parent_id=current_user.id) }}">
+            <i class="fa-solid fa-utensils"></i>
+            Thông tin bữa ăn
+        </a>
+    </div>
+    <div class="box box-color-3">
+        <a href="{{ url_for('info_work', parent_id=current_user.id) }}">
+            <i class="fa-solid fa-user-graduate"></i>
+            Thông tin hoạt động
+        </a>
+    </div>
+    <div class="box box-color-3">
+        <a href="{{ url_for('info_tuition', parent_id=current_user.id) }}">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            Thông tin học phí
+        </a>
+    </div>
+    <div class="box box-color-1">
+        <a href="{{ url_for('info_notification') }}">
+            <i class="fa-solid fa-bell"></i>
+            Thông báo
+        </a>
+    </div>
+{% endblock %}

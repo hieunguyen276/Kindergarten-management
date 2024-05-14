@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm học sinh mới
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm học sinh vào lớp: {{ class1.name }}</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewStudent_s3') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã lớp học</li>
+                <li>Tên học sinh</li>
+                <li>Giới tính</li> 
+                <li>Năm sinh</li>
+                <li>Địa chỉ</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="class_id" value="{{class1.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" required>
+                </li>
+                <li>
+                    <input type="radio" name="gender" value="Nam" required>Nam
+                    <input type="radio" name="gender" value="Nữ" required>Nữ
+                    <input type="radio" name="gender" value="Khác" required>Khác
+                </li>
+                <li>
+                    <input type="date" name="date_of_birth" required> 
+                </li>
+                <li>
+                    <textarea rows="3" cols="30" name="address" required></textarea>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới học sinh</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

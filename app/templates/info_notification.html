@@ -1,0 +1,28 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin thông báo
+{% endblock %}
+
+{% block z %}
+<div class="content-main">
+    <table name="Bảng thông tin">
+        <tr>
+            <td>STT</td>
+            <td>Tiêu đề</td>  
+            <td>Thời gian</td> 
+            <td>Nội dung</td> 
+        </tr>
+        {% for notifications in notifications|sort(attribute='time') %}
+            <tr>      
+                <td> {{ loop.index }}</td>
+                <td>{{ notifications.name }}</td>  
+                <td>{{ notifications.time.strftime('%d/%m/%Y %H:%M') }}</td>    
+                <td>
+                    <a class="view-btn"  href="{{ url_for('content_notification', notification_id=notifications.id) }}"><i class="fa-solid fa-eye"></i></a>
+                </td>           
+            </tr>    
+        {% endfor%}   
+    </table>
+</div>
+{% endblock %}

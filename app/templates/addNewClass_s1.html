@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Add class
+{% endblock %}
+
+{% block z %}
+
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm mới lớp học</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewClass_s2') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Tên lớp học</li>
+            </ul>
+            <ul class="form-data_value">
+                <li>
+                    <input name="name" required>
+                </li>
+            </ul>
+        </div>
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>  
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cập nhật thể trạng
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật thông tin thể trạng</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_health_s1') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã ID</li>
+                <li>Chiều cao (cm)</li>
+                <li>Cân nặng (kg)</li> 
+                <li>Ghi chú</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="health_id" value="{{health.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="height" value="{{health.height}}" required>
+                </li>
+                <li>
+                    <input name="weight" value="{{health.weight}}" required>
+                </li>
+                <li>
+                    <textarea rows="3" cols="30" name="note" value="{{health.note}}" required></textarea>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

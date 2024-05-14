@@ -1,0 +1,28 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin giáo viên
+{% endblock %}
+
+{% block z %}
+<div class="content-main">
+    <table>
+        <tr>
+            <td>Họ tên</td>
+            <td>Bằng cấp</td>
+            <td>Kinh nghiệm(năm)</td>
+            <td>Số điện thoại</td>
+            <td>Email</td>
+        </tr>
+        {% for teachers in teachers%}
+        <tr>
+            <td>{{ teachers.name }}</td>
+            <td>{{ teachers.degree }}</td>
+            <td>{{ teachers.experience }}</td>
+            <td>{{ teachers.phone }}</td>
+            <td>{{ teachers.email }}</td>
+        </tr>
+        {% endfor%}
+    </table>
+</div>
+{% endblock %}

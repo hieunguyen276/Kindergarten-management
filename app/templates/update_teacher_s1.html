@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Cập nhật giáo viên
+{% endblock %}
+
+{% block z %}
+
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật giáo viên</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_teacher_s1') }}" method="post" class="form-data">
+
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã giáo viên</li>
+                <li>Tên giáo viên</li>
+                <li>Bằng cấp</li>
+                <li>Kinh nghiệm</li>
+                <li>Số điện thoại</li>
+                <li>Email</li>
+                <li>Địa chỉ</li>      
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="teacher_id" value="{{teacher.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" value="{{teacher.name}}" required>
+                </li>   
+                <li>
+                    <input name="degree" value="{{teacher.degree}}" required>
+                </li> 
+                <li>
+                    <input name="experience" value="{{teacher.experience}}" required>
+                </li> 
+                <li>
+                    <input name="phone" value="{{teacher.phone}}" required>
+                </li>    
+                <li>
+                    <input name="email" value="{{teacher.email}}" required>
+                </li>  
+                <li>
+                    <input name="address" value="{{teacher.address}}" required>
+                </li> 
+            </ul>
+        </div>
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

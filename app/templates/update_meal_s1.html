@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Cập nhật bữa ăn
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật bữa ăn</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_meal_s1') }}" method="post" class="form-data">
+
+
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã bữa ăn</li>
+                <li>Tên bữa ăn</li>
+                <li>Ngày</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="meal_id" value="{{meal.id}}" readonly="true">
+                </li>
+                <li>
+                    <select name="name" value="{{meal.name}}" required>
+                        <option value="Sáng">Sáng</option>
+                        <option value="Trưa">Trưa</option>
+                        <option value="Chiều">Chiều</option>
+                        <option value="Phụ">Phụ</option>
+                    </select>
+                </li>      
+                <li>
+                    <input type="date" name="time" value="{{meal.time}}" required>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

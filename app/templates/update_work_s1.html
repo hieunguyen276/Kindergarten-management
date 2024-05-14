@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Cập nhật hoạt động
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật hoạt động</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_work_s1') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã hoạt động</li>
+                <li>Tên hoạt động</li>
+                <li>Giáo viên phụ trách </li>
+                <li>Ngày</li>               
+                <li>Thời gian</li>               
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="work_id" value="{{work.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" value="{{work.name}}" required>
+                </li>    
+                <li>
+                    <input name="teacher_name" value="{{work.teacher_name}}">
+                </li>
+                <li>
+                    <input type="date" name="date" value="{{work.date}}">
+                </li>  
+                <li>
+                    <input type="time" name="time" value="{{work.time}}">
+                </li>  
+            </ul>
+        </div>
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

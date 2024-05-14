@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cập nhật thông tin phụ huynh
+{% endblock %}
+
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Cập nhật thông tin phụ huynh</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('update_parent_s1') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã phụ huynh</li>
+                <li>Tên phụ huynh</li>
+                <li>Số điện thoại</li> 
+                <li>Tài khoản</li>
+                <li>Mật khẩu</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="parent_id" value="{{parent.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" value="{{parent.name}}" required>
+                </li>
+                <li>
+                    <input name="phone" value="{{parent.phone}}" required>
+                </li>
+                <li>
+                    <input name="username" value="{{parent.username}}" required>
+                </li>
+                <li>
+                    <input name="password" value="{{parent.password}}" required>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-end">
+            <button class="add-btn">Cập nhật</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới thanh toán
+{% endblock %}
+
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thanh toán học phí:</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewPay_s2') }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã học phí</li>
+                <li>Số tiền nộp</li>
+                <li>Người nộp</li> 
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="tuition_id" value="{{tuition.id}}" readonly="true">
+                </li>
+                <li>
+                    <input type="number" name="money" required>
+                </li>
+                <li>
+                    <input name="payer" required>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

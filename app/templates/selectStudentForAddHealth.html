@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Chọn học sinh thêm sức khỏe
+{% endblock %}
+
+
+{% block z %}
+
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm tình trạng sức khỏe cho học sinh sau:</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <ul>
+
+        <li>
+            <a href="{{ url_for('addNewHealth_s2', student_id=students.id) }}">
+                Mã học sinh: {{ students.id }} - Tên học sinh: {{ students.name}} - Ngày sinh: {{students.date_of_birth}}
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+{% endblock %}

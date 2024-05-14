@@ -1,0 +1,54 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin học phí
+{% endblock %}
+
+{% block z %}
+
+<div class="content-main">
+    <table name="Bảng thông tin">
+        <tr>
+            <td>STT</td>
+            <td>Thời gian</td> 
+            <td>Tên học sinh</td>
+            <td>Mã học sinh</td>
+            <td>Tên lớp</td>
+            <td>Học phí</td>
+            <td>Đã thu</td>
+            <td>Còn nợ</td>
+            <td>Người nộp</td> 
+            <td>Thời gian nộp</td>      
+        </tr>
+    
+        {% for tuition in tuitions %}
+        <tr>
+            <td> {{loop.index}} </td>
+            {% if tuition.student_id == student.id %}
+            <td>{{ tuition.time.strftime('%d/%m/%Y') }}</td> 
+            <td>{{ student.name }}</td>
+            <td>{{ student.id }}</td>
+            <td>
+                {% for class in class1 %}
+                {% if class.id == student.class_id %} 
+                    {{ class.name }}
+                {% endif %}
+                {% endfor%}
+            </td>
+            
+                <td>{{ tuition.tuition_receivable }}</td>
+                <td>{{ tuition.tuition_paid }}</td>
+                <td>{{ tuition.tuition_debt }}</td>
+            
+                    {% for pay in pays %}
+                    {% if tuition.id == pay.tuition_id %} 
+                    <td>{{ pay.payer }} </td>
+                    <td>{{ pay.time.strftime('%d/%m/%Y %H:%M') }}</td>
+                    {% endif %}
+                    {% endfor%}
+            {% endif %}
+        </tr>
+        {% endfor%}
+    </table>
+</div>
+{% endblock %} 

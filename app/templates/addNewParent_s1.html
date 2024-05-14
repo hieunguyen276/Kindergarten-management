@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm phụ huynh
+{% endblock %}
+
+
+{% block z %}
+<div class="top-main">
+    <div class="search-input">
+        <form action="{{ url_for('searchStudent') }}" method="GET">
+            <div class="form-input">
+                <input type="text" name="id" placeholder="Nhập mã học sinh">
+                <button class="view-btn">Tìm kiếm</button>
+            </div>
+        </form>     
+    </div>
+</div>
+
+<div class="content-main">
+    <table>
+        <tr>
+            <td>Mã học sinh</td>
+            <td>Tên học sinh</td>
+            <td>Thao tác</td>
+        </tr>
+        {% for student in students %}     
+                <tr>
+                    <td>
+                        {{ student.id }}
+                    </td>
+                    <td>
+                        {{ student.name }}
+                    </td>
+                    <td>
+                        <a class="select-btn" href="{{ url_for('addNewParent_s2', student_id=student.id) }}"> <i class="fa-regular fa-hand-pointer"></i>
+                    </td>
+                </tr>
+            </a>
+
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

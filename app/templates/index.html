@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% set current_page = "dashboard" %}
+
+{% block z %}
+    
+    <div class="box box-color-1 ">
+        <a href="{{ url_for('account_management') }}">
+            <i class="fa-solid fa-user-gear"></i>
+            <span>Quản lý tài khoản</span>
+        </a>
+    </div>
+    <div class="box box-color-4">
+        <a href="{{ url_for('student_management') }}">
+            <i class="fa-solid fa-children"></i>
+            <span>Quản lý học sinh</span>
+        </a>
+    </div>
+    <div class="box box-color-2">
+        <a href="{{ url_for('health_management') }}">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <span>Quản lý thể trạng</span>
+        </a>
+    </div>
+    <div class="box box-color-4">
+        <a href="{{ url_for('class_management') }}">
+            <i class="fa-solid fa-school"></i>
+            <span>Quản lý lớp học</span>
+        </a>
+    </div>
+    <div class="box box-color-3">
+        <a href="{{ url_for('teacher_management') }}">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>Quản lý giáo viên</span>
+        </a>
+    </div>
+    <div class="box box-color-2 ">
+        <a href="{{ url_for('parent_management') }}">
+            <i class="fa-solid fa-people-line"></i>
+            <span>Quản lý phụ huynh</span>
+        </a>
+    </div>
+    <div class="box box-color-3">
+        <a href="{{ url_for('tuition_management') }}">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <span>Quản lý học phí</span>
+        </a>
+    </div>
+    <div class="box box-color-1">
+        <a href="{{ url_for('notification_management') }}">
+            <i class="fa-solid fa-bell"></i>
+            <span>Quản lý thông báo</span>
+        </a>
+    </div>
+{% endblock %}

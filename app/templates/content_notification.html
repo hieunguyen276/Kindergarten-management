@@ -1,0 +1,23 @@
+{% extends "layout_parent.html" %}
+
+{% block title %}
+    Thông tin thông báo
+{% endblock %}
+
+{% block z %}
+    <div class="noti-header">
+        <h4>NỘI DUNG THÔNG BÁO</h4>
+    </div>
+    <div class="noti-container">
+        <ul class="noti-title">
+            <li>Ngày gửi:</li>
+            <li>Tiêu đề:</li>
+            <li>Nội dung:</li></li>
+        </ul>
+        <ul class="noti-content">
+            <li>{{ notification.time.strftime('%d/%m/%Y %H:%M') }}</li>
+            <li>{{ notification.name }}</li>
+            <li><p>{{ notification.content }}</p></li>
+        </ul>
+    </div>
+{% endblock %}

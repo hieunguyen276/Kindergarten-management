@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Thêm mới món ăn
+{% endblock %}
+
+{% block z %}
+<div class="top-main">
+    <div class="sub-header">
+        <span>Thêm mới món ăn cho bữa ( {{ meal.name }} ) ngày ( {{meal.time.strftime('%d/%m/%Y')}} )</span>            
+    </div> 
+</div>
+<div class="content-main">
+    <form action="{{ url_for('addNewDish_s2', meal_id=meal.id) }}" method="post" class="form-data">
+        <div class="form_content">
+            <ul class="form-data_name">
+                <li>Mã bữa ăn</li>
+                <li>Tên món ăn</li>
+            </ul>
+    
+            <ul class="form-data_value">
+                <li>
+                    <input name="meal_id" value="{{meal.id}}" readonly="true">
+                </li>
+                <li>
+                    <input name="name" required>
+                </li>
+            </ul>
+        </div>
+        <div class="form-end">
+            <button class="add-btn">Thêm mới</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

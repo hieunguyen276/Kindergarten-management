@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quản lý lớp học
+{% endblock %}
+
+{% set current_page = "class_management" %}
+
+{% block z %}
+
+    <div class="top-main">
+        <div class="action-bg">
+            <a class="btn-item add-btn" href="{{ url_for('addNewClass_s1') }}">Thêm mới</a>
+        </div>
+
+        <div class="sub-header">
+            <div class="menu-class">
+                <ul class="list-select">
+                    <li><a class="select-btn" href="{{ url_for('work_management') }}">Quản lý hoạt động</a></li>
+                    <li><a class="select-btn" href="{{ url_for('meal_management') }}">Quản lý bữa ăn</a></li>
+                </ul>
+            </div>
+                
+        </div>
+    </div>
+
+    <div class="content-main">
+        <table>
+            <tr>
+                <td>STT</td>
+                <td>Mã lớp học</td>
+                <td>Tên lớp học</td>
+                <td>Thao tác</td>
+            </tr>
+            {% for class in classes%}
+            <tr>
+                <td> {{loop.index }} </td>
+                <td>{{ class.id }}</td>
+                <td>{{ class.name }}</td>
+                <td>
+                    <a class="update-btn" href="{{ url_for('update_class', class_id=class.id) }}"><i class="fa-solid fa-pencil"></i></a>
+                    <a class="del-btn" href="{{ url_for('delete_class', class_id=class.id) }}"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+{% endblock %}
